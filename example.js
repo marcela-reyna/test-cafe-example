@@ -1,15 +1,19 @@
-import { Selector } from 'testcafe'; // first import testcafe selectors
+import { Selector } from 'testcafe';
+
+const remoteRadioButton = Selector('#remote-testing');
+const developerName = Selector('#submit-button');
 
 fixture `Getting Started`// declare the fixture
     .page `https://devexpress.github.io/testcafe/example`;  // specify the start page
 
 
-//then create a test and place your code there
-test('My first test', async t => {
+test('Enter various inputs', async t => {
     await t
-        .typeText('#developer-name', 'John Smith')
-        .click('#submit-button')
+        .typeText('#developer-name', 'Marcela Reyna')
+        .click(remoteRadioButton)
+        .click(developerName)
 
         // Use the assertion to check if the actual header text is equal to the expected one
-        .expect(Selector('#article-header').innerText).eql('Thank you, John Smith!');
+        .expect(Selector('#article-header').innerText).eql('Thank you, Marcela Reyna!');
 });
+
